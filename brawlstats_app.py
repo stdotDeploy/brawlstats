@@ -7,6 +7,7 @@ def get_request():
     st.write(headers)
     url = 'https://api.brawlstars.com/v1/players/'
     response = requests.get(url, params=params, headers=headers)
+    st.write(response.url)
     return response
 
 st.title('BrawlStats')
