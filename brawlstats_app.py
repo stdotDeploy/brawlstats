@@ -13,5 +13,6 @@ st.title('BrawlStats')
 st.write('A Brawl Stars Stats App')
 params = st.text_input('Your Tag')
 if params:
-    get_request()
+    st.write(get_request())
+    
 
