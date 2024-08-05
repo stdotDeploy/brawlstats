@@ -9,6 +9,7 @@ params = st.text_input('Your Tag')
 API_KEY = st.secrets(['api'])
 
 st.title('Brawl Stats')
+
 def get_request(api_key, params):
     headers = 'Authentication : Bearer {API_KEY}'
     st.write('headers')
