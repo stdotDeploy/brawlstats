@@ -8,7 +8,7 @@ params = st.text_input('Your Tag')
 st.title('Brawl Stats')
 
 def get_request():
-    API_KEY = st.secrets(['api']['API_KEY'])
+    API_KEY = st.secrets['api']['API_KEY']
     headers = {'Authorization': f'Bearer {API_KEY}'}
     st.write('headers')
     url = 'https://api.brawlstars.com/v1/players/'
