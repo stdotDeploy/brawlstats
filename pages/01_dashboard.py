@@ -4,6 +4,8 @@ import pandas as pd
 from Brawlstats import APIrequests
 import base64
 import plotly.express as px
+import os
+
 st.set_page_config(layout="wide")
 
 df_placeholder = pd.DataFrame()
@@ -214,7 +216,8 @@ def get_img(file):
         data=f.read()
     return base64.b64encode(data).decode()
 
-img = get_img("/home/lrose/brawlstats/assets/wallpaper.jpg")
+FILE_ROOT = os.curdir
+img = get_img(f"{FILE_ROOT}/assets/wallpaper.jpg")
 API_KEY = st.secrets['api']['api_key'] 
 api =  APIrequests(api_key=API_KEY)
 css = f"""
@@ -298,7 +301,7 @@ df_battles_trophy_brawler = df_battles[['battleTime', 'trophyChange','played_bra
 
 col = st.columns([3,1,3])
 with col[1]:
-    st.image('/home/lrose/brawlstats/assets/logo.png')
+    st.image(f'{FILE_ROOT}/assets/logo.png')
 
 with st.container():
     cols_2 =st.columns([3,1])
@@ -312,7 +315,7 @@ with st.container():
             cols_101 = st.columns([1,6])
             with cols_101[0]:
                 with st.container(border=False, height=50):
-                    st.image('/home/lrose/brawlstats/assets/XP.png')
+                    st.image(f'{FILE_ROOT}/assets/XP.png')
                 with st.container(border=False, height=50):
                     st.image('https://cdn-old.brawlify.com/icon/Club.png', output_format='PNG')
                 with st.container(border=False, height=50):
@@ -423,12 +426,12 @@ with st.container():
                 more_cols = st.columns([1,11]) 
                 with more_cols[0]:
                     
-                    st.image('/home/lrose/brawlstats/assets/Power_Points.png')
+                    st.image(f'{FILE_ROOT}/assets/Power_Points.png')
                     st.image('https://cdn-old.brawlify.com/icon/trophy.png')
-                    st.image('/home/lrose/brawlstats/assets/victory.png')
+                    st.image(f'{FILE_ROOT}/assets/victory.png')
                     st.image(f'{img}')
                     st.image('https://cdn-old.brawlify.com/icon/Ranking.png')
-                    st.image('/home/lrose/brawlstats/assets/stopwatch.png')
+                    st.image(f'{FILE_ROOT}/assets/stopwatch.png')
                     st.image("https://cdn.brawlify.com/game-modes/regular/48000006.png")
                     st.image('https://cdn-old.brawlify.com/icon/trophy.png')
                     st.image('https://cdn-old.brawlify.com/icon/trophy.png')
