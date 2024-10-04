@@ -3,6 +3,7 @@ import json
 import pandas as pd 
 from Brawlstats import APIrequests
 import base64
+import os
 
 @ st.cache_data
 def get_img(file):
@@ -10,7 +11,8 @@ def get_img(file):
         data=f.read()
     return base64.b64encode(data).decode()
 
-img = get_img("/home/lrose/brawlstats/assets/wallpaper.jpg")
+FILE_ROOT = os.curdir
+img = get_img(f"{FILE_ROOT}/assets/wallpaper.jpg")
 API_KEY = st.secrets['api']['api_key'] 
 api =  APIrequests(api_key=API_KEY)
 
@@ -18,7 +20,7 @@ api =  APIrequests(api_key=API_KEY)
 css = f"""
 <style>
 [data-testid="stApp"] {{
-background-image: url("data:/home/lrose/brawlstats/assets/wallpaper.jpg;base64,{img}");
+background-image: url("data:{FILE_ROOT}/assets/wallpaper.jpg;base64,{img}");
 background-size: cover}}
 
 [data-testid="stHeader"] {{
@@ -56,7 +58,7 @@ st.markdown(css, unsafe_allow_html=True)
 # Display logo in the center column
 col1, col2, col3 = st.columns([1, 3, 1])
 with col2:
-    st.image('/home/lrose/brawlstats/assets/logo.png', use_column_width=True)
+    st.image(f"{FILE_ROOT}/assets/logo.png", use_column_width=True)
 
 user_tag = st.text_input('.', placeholder='Enter your Player Tag')
 if user_tag:
